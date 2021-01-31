@@ -1,0 +1,58 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <ctype.h>
+
+int Avalue;
+int Bvalue;
+int Cvalue;
+int i = 0;
+int acvalue;
+int factor1;
+int factor2;
+
+int findFactors();
+int main(void)
+{
+    Avalue = get_int("'A' value: ");
+    Bvalue = get_int("'B' value: ");
+    Cvalue = get_int("'C' value: ");
+    findFactors(Avalue, Bvalue, Cvalue);
+    printf("\nA*C= %i\n", acvalue);
+    printf("\nFactor 1: %i\n",factor1);
+    printf("Factor 2: %i\n", factor2);
+}
+
+int findFactors(int avalue, int bvalue, int cvalue)
+{
+    acvalue = avalue * cvalue;
+    if (bvalue < 0 && acvalue > 0)
+    {
+         do 
+        {
+             i++;
+             factor1 = acvalue / i;
+             factor2 = acvalue / factor1;
+             factor1 -= factor1*2;
+             factor2 -= factor2*2;
+        }
+        while(factor1 + factor2 != bvalue);
+        return factor1;
+        return factor2;
+    }
+    else
+    {
+        do 
+        {
+             i++;
+             factor1 = acvalue / i;
+             factor2 = acvalue / factor1;
+        }
+        while(factor1 + factor2 != bvalue);
+        
+        return acvalue;
+        return factor1;
+        return factor2;
+    }
+}
